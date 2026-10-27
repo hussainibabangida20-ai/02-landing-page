@@ -1,22 +1,22 @@
-const menuToggle = document.querySelector(".menu-toggle");
+const menuToggle = document.querySelector(".nav__toggle");
 const primaryNav = document.querySelector("#primary-nav");
 
 menuToggle?.addEventListener("click", () => {
   const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
   menuToggle.setAttribute("aria-expanded", String(!isExpanded));
   menuToggle.setAttribute("aria-label", isExpanded ? "Open navigation" : "Close navigation");
-  primaryNav?.classList.toggle("is-open", !isExpanded);
+  primaryNav?.classList.toggle("nav--open", !isExpanded);
 });
 
 primaryNav?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => {
     menuToggle?.setAttribute("aria-expanded", "false");
     menuToggle?.setAttribute("aria-label", "Open navigation");
-    primaryNav.classList.remove("is-open");
+    primaryNav.classList.remove("nav--open");
   });
 });
 
-document.querySelectorAll(".faq-question").forEach((button) => {
+document.querySelectorAll(".faq__question").forEach((button) => {
   button.addEventListener("click", () => {
     const expanded = button.getAttribute("aria-expanded") === "true";
     const answerId = button.getAttribute("aria-controls");
@@ -27,10 +27,10 @@ document.querySelectorAll(".faq-question").forEach((button) => {
   });
 });
 
-const billingOptions = document.querySelectorAll(".billing-option");
-const prices = document.querySelectorAll(".price-value");
-const billingNotes = document.querySelectorAll(".billing-note");
-const pricePeriods = document.querySelectorAll(".price-period");
+const billingOptions = document.querySelectorAll(".pricing__option");
+const prices = document.querySelectorAll(".pricing__amount");
+const billingNotes = document.querySelectorAll(".pricing__billing-note");
+const pricePeriods = document.querySelectorAll(".pricing__period");
 
 billingOptions.forEach((button) => {
   button.addEventListener("click", () => {
@@ -39,7 +39,7 @@ billingOptions.forEach((button) => {
 
     billingOptions.forEach((option) => {
       const selected = option === button;
-      option.classList.toggle("active", selected);
+      option.classList.toggle("pricing__option--active", selected);
       option.setAttribute("aria-pressed", String(selected));
     });
 
