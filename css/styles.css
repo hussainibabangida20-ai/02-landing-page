@@ -53,6 +53,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .accessibility__skip-link:focus { transform: translateY(0); }
 
 .header { position: sticky; z-index: 10; top: 0; border-bottom: 1px solid rgba(30, 55, 40, .07); background: rgba(247, 248, 244, .94); backdrop-filter: blur(14px); }
+.header.header--scrolled { box-shadow: 0 8px 24px rgba(23, 35, 29, .08); }
 .header__inner { min-height: 78px; display: flex; align-items: center; justify-content: space-between; }
 .brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 15px; font-weight: 800; letter-spacing: -.7px; }
 .brand__light { font-weight: 500; }
@@ -156,6 +157,7 @@ h1, h2, h3 { font-family: var(--font-display); }
 .pricing__option.pricing__option--active { color: white; background: var(--green-dark); }
 .pricing__option span { margin-left: 4px; color: #4a9b5b; font-size: 9px; }
 .pricing__option.pricing__option--active span { color: var(--lime); }
+.pricing__option .pricing__savings[hidden] { display: none; }
 .pricing__grid { display: grid; grid-template-columns: repeat(3, 1fr); align-items: stretch; gap: 16px; }
 .card.card--pricing { position: relative; padding: 29px 26px 26px; border-color: #e2e8df; }
 .card.card--pricing.card--featured { z-index: 1; border: 2px solid var(--color-brand); box-shadow: var(--shadow-featured); }
@@ -206,8 +208,10 @@ h1, h2, h3 { font-family: var(--font-display); }
 .faq__icon::before, .faq__icon::after { position: absolute; top: 9px; left: 5px; width: 8px; height: 1px; background: var(--green); content: ""; }
 .faq__icon::after { transform: rotate(90deg); transition: transform .2s; }
 .faq__question[aria-expanded="true"] .faq__icon::after { transform: rotate(0); }
-.faq__answer { max-width: 570px; padding: 0 35px 20px 0; }
+.faq__answer { max-width: 570px; height: 0; overflow: hidden; padding: 0 35px 0 0; transition: height .25s ease; }
+.faq__answer.faq__answer--open { padding-bottom: 20px; }
 .faq__answer p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.8; }
+.faq__answer[hidden] { display: none; }
 
 .signup { color: white; background: var(--green-dark); }
 .signup__layout { display: grid; grid-template-columns: 1fr .8fr; align-items: center; gap: 100px; }
